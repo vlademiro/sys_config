@@ -15,7 +15,8 @@ object frmPadraoCRUD: TfrmPadraoCRUD
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
-  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,6 +52,7 @@ object frmPadraoCRUD: TfrmPadraoCRUD
       Height = 25
       Caption = 'Excluir'
       TabOrder = 2
+      OnClick = btnExcluirClick
     end
     object btnCancelar: TBitBtn
       Left = 358
@@ -96,6 +98,7 @@ object frmPadraoCRUD: TfrmPadraoCRUD
         Width = 684
         Height = 256
         Align = alClient
+        DataSource = dsPrincipal
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -126,9 +129,14 @@ object frmPadraoCRUD: TfrmPadraoCRUD
       ImageIndex = 1
     end
   end
-  object qryGrid: TFDQuery
+  object qryPrincipal: TFDQuery
     Connection = DM.con_admin
     Left = 440
+    Top = 144
+  end
+  object dsPrincipal: TDataSource
+    DataSet = qryPrincipal
+    Left = 504
     Top = 144
   end
 end

@@ -120,12 +120,12 @@
             <Form>frmPadraoCRUD</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Fonte\U_Usuario.pas">
-            <Form>frmUsuario</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\Fonte\U_Grupo.pas">
             <Form>frmGrupo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Fonte\U_Usuario.pas">
+            <Form>frmUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -30,7 +30,9 @@ implementation
 
 {$R *.dfm}
 
-uses U_Usuario, U_Grupo;
+uses U_Grupo, U_Usuario;
+
+
 
 { TfrmPrincipal }
 

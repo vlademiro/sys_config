@@ -13,13 +13,13 @@ uses
 
 type
   TfrmGrupo = class(TfrmPadraoCRUD)
-    qryGridid_grp: TFDAutoIncField;
-    qryGridgrupo: TStringField;
+    qryPrincipalID_GRP: TIntegerField;
+    qryPrincipalGRUPO: TStringField;
     Label1: TLabel;
-    DBEdit1: TDBEdit;
-    dsGrid: TDataSource;
+    dbId_Grp: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    dbGrupo: TDBEdit;
+    procedure btnIncluirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,5 +32,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmGrupo.btnIncluirClick(Sender: TObject);
+begin
+  inherited;
+  dbGrupo.SetFocus;
+end;
 
 end.

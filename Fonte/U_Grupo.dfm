@@ -1,5 +1,5 @@
 inherited frmGrupo: TfrmGrupo
-  Caption = 'Grupo de usu'#225'rios'
+  Caption = 'Grupos'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgcPrincipal: TPageControl
@@ -9,6 +9,19 @@ inherited frmGrupo: TfrmGrupo
       ExplicitTop = 24
       ExplicitWidth = 684
       ExplicitHeight = 337
+      inherited grdListagem: TDBGrid
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_GRP'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'GRUPO'
+            Visible = True
+          end>
+      end
     end
     inherited tabData: TTabSheet
       ExplicitLeft = 4
@@ -16,67 +29,72 @@ inherited frmGrupo: TfrmGrupo
       ExplicitWidth = 684
       ExplicitHeight = 337
       object Label1: TLabel
-        Left = 88
+        Left = 96
         Top = 88
         Width = 33
         Height = 13
         Caption = 'C'#243'digo'
-        FocusControl = DBEdit1
+        FocusControl = dbId_Grp
       end
       object Label2: TLabel
-        Left = 88
+        Left = 96
         Top = 128
-        Width = 73
+        Width = 29
         Height = 13
-        Caption = 'Nome do grupo'
-        FocusControl = DBEdit2
+        Caption = 'Grupo'
+        FocusControl = dbGrupo
       end
-      object DBEdit1: TDBEdit
-        Left = 88
+      object dbId_Grp: TDBEdit
+        Left = 96
         Top = 104
         Width = 134
         Height = 21
-        DataField = 'id_grp'
-        DataSource = dsGrid
+        DataField = 'ID_GRP'
+        DataSource = dsPrincipal
+        Enabled = False
         TabOrder = 0
       end
-      object DBEdit2: TDBEdit
-        Left = 88
-        Top = 144
+      object dbGrupo: TDBEdit
+        Left = 96
+        Top = 147
         Width = 394
         Height = 21
-        DataField = 'grupo'
-        DataSource = dsGrid
+        CharCase = ecUpperCase
+        DataField = 'GRUPO'
+        DataSource = dsPrincipal
         TabOrder = 1
       end
     end
   end
-  inherited qryGrid: TFDQuery
+  inherited qryPrincipal: TFDQuery
     Active = True
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.GeneratorName = 'GEN_GRUPO'
+    UpdateOptions.AutoIncFields = 'ID_GRP'
     SQL.Strings = (
       'select '
       'id_grp,'
       'grupo'
       'from grupo')
-    Left = 512
+    Left = 496
     Top = 72
-    object qryGridid_grp: TFDAutoIncField
+    object qryPrincipalID_GRP: TIntegerField
+      AutoGenerateValue = arAutoInc
       DisplayLabel = 'C'#243'digo'
-      FieldName = 'id_grp'
-      Origin = 'id_grp'
-      ProviderFlags = [pfInWhere, pfInKey]
+      FieldName = 'ID_GRP'
+      Origin = 'ID_GRP'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object qryGridgrupo: TStringField
-      DisplayLabel = 'Nome do grupo'
-      FieldName = 'grupo'
-      Origin = 'grupo'
+    object qryPrincipalGRUPO: TStringField
+      DisplayLabel = 'Grupo'
+      FieldName = 'GRUPO'
+      Origin = 'GRUPO'
       Required = True
       Size = 30
     end
   end
-  object dsGrid: TDataSource
-    DataSet = qryGrid
-    Left = 568
+  inherited dsPrincipal: TDataSource
+    Left = 552
     Top = 72
   end
 end
